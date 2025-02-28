@@ -144,10 +144,16 @@ miniprogram/
 1. 克隆仓库
 
 ```bash
-git clone https://github.com/wanglai-card/wanglai-card-miniprogram.git
+git clone https://github.com/BruceShang/greeting-card-miniprogram.git
 ```
 
-2. 安装依赖
+2. 切到项目目录
+
+```bash
+cd miniprogram
+```
+
+3. 安装依赖
 
 ```bash
 npm install
