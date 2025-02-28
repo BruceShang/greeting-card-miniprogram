@@ -1,0 +1,308 @@
+{
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "source",
+  "setting": {
+    "compileHotReLoad": true,
+    "urlCheck": false
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/card-detail/card-detail",
+          "pathName": "pages/card-detail/card-detail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/send-card/send-card",
+          "pathName": "pages/send-card/send-card",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/send-card/send-card",
+          "pathName": "pages/send-card/send-card",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-result/card-result",
+          "pathName": "pages/card-result/card-result",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-favorites/card-favorites",
+          "pathName": "pages/card-favorites/card-favorites",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/person-center/person-center",
+          "pathName": "pages/person-center/person-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-result/card-result",
+          "pathName": "pages/card-result/card-result",
+          "query": "shareCardId=21e42ccb6798b466028fa0f375cdbb96&userId=oWDT064vK49cPQ9vHBDWt3yhaUSA&pageType=sendCard",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/received-list/received-list",
+          "pathName": "pages/received-list/received-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/send-card/send-card",
+          "pathName": "pages/send-card/send-card",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/received-list/received-list",
+          "pathName": "pages/received-list/received-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/send-card/send-card",
+          "pathName": "pages/send-card/send-card",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-list/card-list",
+          "pathName": "pages/card-list/card-list",
+          "query": "type=f5835fa6678edf82050259531609e14b&name=%E7%94%9F%E6%97%A5%E7%A5%9D%E7%A6%8F",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-result/card-result",
+          "pathName": "pages/card-result/card-result",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/problem-feedback/problem-feedback",
+          "pathName": "pages/problem-feedback/problem-feedback",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/edit-user/edit-user",
+          "pathName": "pages/edit-user/edit-user",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/person-center/person-center",
+          "pathName": "pages/person-center/person-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-favorites/card-favorites",
+          "pathName": "pages/card-favorites/card-favorites",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/person-center/person-center",
+          "pathName": "pages/person-center/person-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/send-card/send-card",
+          "pathName": "pages/send-card/send-card",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/received-list/received-list",
+          "pathName": "pages/received-list/received-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/received-list/received-list",
+          "pathName": "pages/received-list/received-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-result/card-result",
+          "pathName": "pages/card-result/card-result",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/edit-user/edit-user",
+          "pathName": "pages/edit-user/edit-user",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/person-center/person-center",
+          "pathName": "pages/person-center/person-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-favorites/card-favorites",
+          "pathName": "pages/card-favorites/card-favorites",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/person-center/person-center",
+          "pathName": "pages/person-center/person-center",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-result/card-result",
+          "pathName": "pages/card-result/card-result",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-use/card-use",
+          "pathName": "pages/card-use/card-use",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-detail/card-detail",
+          "pathName": "pages/card-detail/card-detail",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/card-list/card-list",
+          "pathName": "pages/card-list/card-list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/logs/logs",
+          "pathName": "pages/logs/logs",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/image-cropper/image-cropper",
+          "pathName": "pages/image-cropper/image-cropper",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/format-convert/format-convert",
+          "pathName": "pages/format-convert/format-convert",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/size-zoom/size-zoom",
+          "pathName": "pages/size-zoom/size-zoom",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "pages/batch-compress/index",
+          "pathName": "pages/batch-compress/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

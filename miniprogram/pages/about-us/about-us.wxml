@@ -1,0 +1,18 @@
+<!-- pages/about-us.wxml -->
+<page-meta>
+    <navigation-bar title="关于我们" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+</page-meta>
+<view class="about-us">
+    <view class="logo">
+        <image src="https://6772-greeting-card-7glxmbnm2fb7705b-1334247811.tcb.qcloud.la/icons/logo.png?sign=1c8453501aabeef219df20e0d716c7d2&t=1736416492" />
+    </view>
+    <view class="intro">「往来贺卡」让送礼变得简单！精美贺卡随心定制，帮你轻松表达心意，让亲朋好友倍感温暖。</view>
+    <view class="contact">
+        <text>联系我们：</text>
+        3887416603@qq.com
+    </view>
+    <!-- <view class="qrCode">
+        <image show-menu-by-longpress="{{true}}" src="https://6772-greeting-card-7glxmbnm2fb7705b-1334247811.tcb.qcloud.la/common/9181736589647_.pic.jpg?sign=5de7124d70554ed8979573098936b115&t=1736589684"></image>
+        <text>扫一扫上面的二维码图案，加我为朋友。</text>
+    </view> -->
+</view>

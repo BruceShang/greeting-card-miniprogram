@@ -1,0 +1,32 @@
+/* components/bg-music/bg-music.wxss */
+.music-control {
+  position: fixed;
+  top: 200rpx;
+  right: 30rpx;
+  z-index: 999;
+  padding: 10rpx;
+}
+
+.music-icon {
+  width: 60rpx;
+  height: 60rpx;
+  padding: 10rpx;
+  border-radius: 50%;
+  border: 1px rgb(234, 233, 233) solid;
+  background-color: rgba(208, 208, 208, 0.5);
+  transition: transform 0.3s ease;
+
+  &.playing {
+    animation: rotate 2s linear infinite;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "usingComponents": {
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "open-process": "../../components/open-process/open-process",
+    "birthday-cake": "/components/birthday-cake/birthday-cake",
+    "fireworks": "/components/fireworks/fireworks",
+     "rocket": "/components/rocket/rocket",
+     "red-packet-rain": "/components/red-packet-rain/red-packet-rain"
+  }
+}

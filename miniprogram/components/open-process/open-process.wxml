@@ -1,0 +1,33 @@
+<view class="a-sheet__content">
+    <!-- <view class="item">
+        <view class="item__title">1.识别赞赏二维码，并支付相应金额</view>
+        <view class="item__des">
+            <text class="sign">￥</text>
+            9.9 / 月卡、
+            <text class="sign">￥</text>
+            19.9 / 季卡、
+            <text class="sign">￥</text>
+            69.9 / 年卡
+        </view>
+        <view class="item__pay-code">
+            <image show-menu-by-longpress src="cloud://greeting-card-7glxmbnm2fb7705b.6772-greeting-card-7glxmbnm2fb7705b-1334247811/common/bruce-pay.png" mode="aspectFit" />
+            <text>请先保存二维码，再识别支付</text>
+        </view>
+    </view> -->
+    <!-- <view class="item">
+        <view class="item__title">2.在“个人主页”，找到”联系我们“进入页面</view>
+        <view class="item__des">
+            <text class="p">2.1 选择“开通会员”，上传支付截图，提交开通申请。</text>
+        </view>
+    </view>
+    <view class="item">
+        <view class="item__title">3.等待“往来贺卡”平台处理，一般不超过2小时</view>
+    </view> -->
+    <view class="item">
+        <view class="item__title">分享给 3 位好友或群聊，立即获得 1 个月的VIP会员。</view>
+        <!-- <view class="item__des">
+            <text class="p">2.1 选择“开通会员”，上传支付截图，提交开通申请。</text>
+        </view> -->
+    </view>
+    <button class="btn-share" open-type="share" bindtap="onSendShare">分享</button>
+</view>

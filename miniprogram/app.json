@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/card-list/card-list",
+    "pages/card-favorites/card-favorites",
+    "pages/card-use/card-use",
+    "pages/card-result/card-result",
+    "pages/person-center/person-center",
+    "pages/edit-user/edit-user",
+    "pages/about-us/about-us",
+    "pages/problem-feedback/problem-feedback",
+    "pages/received-list/received-list",
+    "pages/send-card/send-card"
+  ],
+  "window": {
+    "navigationBarTitleText": "往来贺卡",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "navigation-bar": "components/navigation-bar/navigation-bar"
+  },
+  "useExtendedLib": {
+    "weui": true
+  },
+  "rendererOptions": {
+    "skyline": {
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "tagNameStyleIsolation": "legacy",
+      "disableABTest": true,
+      "sdkVersionBegin": "3.0.0",
+      "sdkVersionEnd": "15.255.255"
+    }
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

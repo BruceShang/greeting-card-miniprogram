@@ -1,0 +1,117 @@
+<!-- index.wxml -->
+<!-- <page-meta>
+  <navigation-bar title="往来贺卡" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+</page-meta> -->
+<view class="custom-header">
+  <view class="header-content">
+    <!-- 欢迎语 -->
+    <view class="welcome">Welcome 👋</view>
+    <!-- 搜索框 -->
+    <view class="search-box">
+      <icon type="search" size="14"></icon>
+      <input type="text" placeholder="新年祝福、纪念日、结婚、生日、生意祝贺..." placeholder-class="placeholder" bindinput="onSearchInput" value="{{searchKey}}" />
+    </view>
+  </view>
+</view>
+<view class="container">
+  <!-- 分类标签 -->
+  <scroll-view scroll-x class="category-tabs">
+    <view class="tab-item {{currentCategory === 'all' ? 'active' : ''}}" bindtap="handleCategoryChange" data-category="all">
+      全部
+    </view>
+    <view class="tab-item {{currentCategory === item._id ? 'active' : ''}}" wx:for="{{categories}}" wx:key="_id" bindtap="handleCategoryChange" data-category="{{item._id}}">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  <!-- 卡片列表区域 -->
+  <scroll-view scroll-y class="cards-container">
+    <!-- 骨架屏 -->
+    <view class="skeleton" wx:if="{{loading}}">
+      <van-skeleton title row="6" />
+    </view>
+    <!-- 热门贺卡 -->
+    <view class="section" wx:if="{{currentCategory === 'all' && !loading}}">
+      <view class="section-header">
+        <text>热门贺卡</text>
+        <view class="see-all" bindtap="navigateToCardList" data-type="hot" data-name="热门贺卡">
+          查看所有
+          <text class="iconfont icon-youjiantou"></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class="cards-row">
+        <view class="card-item" wx:for="{{hotCards}}" wx:key="_id">
+          <view class="fold"></view>
+          <image lazy-load src="{{item.coverUrl}}" mode="aspectFill" bindtap="handleOpenDialog" data-item="{{item}}" data-_id="{{item._id}}" />
+          <view class="like-btn" catchtap="handleLike" data-id="{{item._id}}">
+            <text class="iconfont icon-likefill {{item.isLiked ? 'like-btn--active' : ''}}" wx:if="{{item.isLiked}}"></text>
+            <text class="iconfont icon-like" wx:else></text>
+            <!-- <text class="like-count">{{item.likeCount}}</text> -->
+          </view>
+          <view class="vip-tag" wx:if="{{item.isVIP}}">
+            <text class="iconfont icon-vip"></text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <!-- 分类贺卡 -->
+    <view class="section" wx:for="{{categories}}" wx:key="_id" wx:if="{{currentCategory === 'all' || currentCategory === item._id}}">
+      <view class="section-header">
+        <text>{{item.name}}</text>
+        <view class="see-all" bindtap="navigateToCardList" data-type="{{item._id}}" data-name="{{item.name}}">
+          查看所有
+          <text class="iconfont icon-youjiantou"></text>
+        </view>
+      </view>
+      <scroll-view scroll-x class="cards-row">
+        <view class="card-item" wx:for="{{categoryCards[item.name]}}" wx:key="_id" wx:for-item="card">
+          <view class="fold"></view>
+          <image lazy-load src="{{card.coverUrl}}" mode="aspectFill" bindtap="handleOpenDialog" data-item="{{card}}" data-_id="{{card._id}}" />
+          <view class="like-btn" catchtap="handleLike" data-id="{{card._id}}">
+            <text class="iconfont icon-likefill {{card.isLiked ? 'like-btn--active' : ''}}" wx:if="{{card.isLiked}}"></text>
+            <text class="iconfont icon-like" wx:else></text>
+            <!-- <text class="like-count">{{item.likeCount}}</text> -->
+          </view>
+          <view class="vip-tag" wx:if="{{card.isVIP}}">
+            <text class="iconfont icon-vip"></text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </scroll-view>
+  <!-- 底部导航栏 -->
+  <view class="tab-bar safe-area-bottom">
+    <view class="tab-item active" bindtap="handleTabBar" data-type="home">
+      <text class="iconfont icon-heqia"></text>
+      <text>贺卡</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="favorite">
+      <text class="iconfont icon-shoucang"></text>
+      <text>我的收藏</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="sendCard">
+      <text class="iconfont icon-fasong"></text>
+      <text>发出的贺卡</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="person">
+      <text class="iconfont icon-geren"></text>
+      <text>个人主页</text>
+    </view>
+  </view>
+</view>
+<view class="dialog__overlay" wx:if="{{show}}"></view>
+<van-dialog custom-class="my-dialog" overlay="{{false}}" width="280" use-slot show="{{ show }}" showConfirmButton="{{false}}">
+  <view class="dialog__img">
+    <image class="dialog__img--main" src="{{imageUrl}}" mode="aspectFill" />
+    <image class="dialog__img--sub" src="../../images/common/card-bottom.png" />
+    <view class="dialog__img--btn">拆</view>
+  </view>
+  <view class="dialog__btn">
+    <van-button custom-class="dialog__btn--use" color="#fb674d" bindtap="handleGoUse">
+      去使用
+    </van-button>
+    <icon type="cancel" size="30" color="#c79958" bindtap="handleColseDialog"></icon>
+  </view>
+</van-dialog>
+<van-action-sheet show="{{ openProcessShow }}" title="免费获得VIP会员" bind:close="handleOpenProcessCancel">
+  <open-process bind:close="onCloseOpenProcess"></open-process>
+</van-action-sheet>

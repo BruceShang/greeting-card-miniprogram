@@ -1,0 +1,11 @@
+<!-- components/fireworks.wxml -->
+<view class="firework-container" wx:if="{{show}}">
+    <view class="firework {{item.active ? 'active' : ''}}" wx:for="{{fireworks}}" wx:key="id" style="left: {{item.left}}%">
+        <view class="rocket"></view>
+        <view class="explosion">
+            <view class="particle-{{index + 1}}" wx:for="{{36}}" wx:for-item="particle" wx:for-index="index" wx:key="index" style="--angle: {{index * 10}}deg"></view>
+        </view>
+    </view>
+</view>
+<!-- 添加背景遮罩 -->
+<view class="cake-mask" wx:if="{{show}}"></view>

@@ -1,0 +1,49 @@
+.red-packet-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 996;
+    overflow: hidden;
+
+    .red-packet {
+        position: absolute;
+        top: -100rpx;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        will-change: transform;
+        animation: rainDown 4s linear 3;
+
+        @for $i from 1 through 20 {
+            &:nth-child(#{$i}) {
+                $startX: $i * 5 - random(5);
+                $duration: 4s + random(5) * 0.2s;
+                $delay: random(15) * 0.1s;
+
+                left: #{$startX}vw;
+                animation-duration: #{$duration};
+                animation-delay: #{$delay};
+            }
+        }
+    }
+}
+
+@keyframes rainDown {
+    0% {
+        transform: translateY(-100rpx) rotate(0deg);
+        opacity: 1;
+    }
+
+    85% {
+        transform: translateY(90vh) rotate(#{random(360)}deg) translateX(#{random(100) - 50}rpx);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(120vh) rotate(#{random(360)}deg) translateX(#{random(100) - 50}rpx);
+        opacity: 0;
+    }
+}

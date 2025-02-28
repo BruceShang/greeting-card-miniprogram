@@ -1,0 +1,128 @@
+/**app.wxss**/
+@import "./styles/reset.scss";
+@import "./styles/iconfont/iconfont.scss";
+
+page {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica,
+    Segoe UI, Arial, Roboto, "PingFang SC", "miui", "Hiragino Sans GB",
+    "Microsoft Yahei", sans-serif;
+  background: #f5f7f9;
+}
+
+/* 全局通用样式 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-around {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+/* 安全区域 */
+.safe-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 常用间距 */
+.mt-10 {
+  margin-top: 10rpx;
+}
+.mt-20 {
+  margin-top: 20rpx;
+}
+.mt-30 {
+  margin-top: 30rpx;
+}
+
+.mb-10 {
+  margin-bottom: 10rpx;
+}
+.mb-20 {
+  margin-bottom: 20rpx;
+}
+.mb-30 {
+  margin-bottom: 30rpx;
+}
+
+/* 常用颜色 */
+.text-primary {
+  color: #1aad19;
+}
+.text-warning {
+  color: #ffc107;
+}
+.text-danger {
+  color: #ff4d4f;
+}
+.text-gray {
+  color: #999;
+}
+
+/* 常用字体大小 */
+.font-sm {
+  font-size: 24rpx;
+}
+.font-md {
+  font-size: 28rpx;
+}
+.font-lg {
+  font-size: 32rpx;
+}
+.font-xl {
+  font-size: 36rpx;
+}
+
+/* 常用圆角 */
+.radius-sm {
+  border-radius: 4rpx;
+}
+.radius-md {
+  border-radius: 8rpx;
+}
+.radius-lg {
+  border-radius: 16rpx;
+}
+.radius-xl {
+  border-radius: 32rpx;
+}
+
+/* 1px 边框解决方案 */
+.border-bottom {
+  position: relative;
+}
+
+.border-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #eee;
+  transform: scaleY(0.5);
+}
+
+// 解决iPhone x 以后的机型 底部安全区域的问题 https://jelly.jd.com/article/6006b1055b6c6a01506c87fd
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
+}

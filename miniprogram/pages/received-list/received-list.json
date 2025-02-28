@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

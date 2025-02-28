@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "birthday-cake": "/components/birthday-cake/birthday-cake",
+    "fireworks": "/components/fireworks/fireworks",
+     "rocket": "/components/rocket/rocket",
+     "red-packet-rain": "/components/red-packet-rain/red-packet-rain",
+     "bg-music": "/components/bg-music/bg-music"
+  }
+}

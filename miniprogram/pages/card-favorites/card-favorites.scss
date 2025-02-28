@@ -1,0 +1,250 @@
+.container {
+  padding: 10rpx;
+}
+.cards-container {
+  padding-bottom: 150rpx;
+}
+.cards-row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10rpx 0rpx;
+
+  .card-box {
+    padding: 0 12rpx;
+  }
+
+  .card-item {
+    display: inline-block;
+    width: 220rpx;
+    // height: 320rpx;
+    margin-top: 24rpx;
+    padding-top: 20rpx;
+    // margin-right: 20rpx;
+    position: relative;
+    border-radius: 16rpx;
+    // overflow: hidden;
+    box-shadow: 0 4rpx 5rpx rgba(0, 0, 0, 0.1);
+    // border: 1px red solid;
+    overflow: hidden;
+
+    image {
+      position: relative;
+      width: 220rpx;
+      height: 300rpx;
+      //   height: 320rpx;
+      border-radius: 16rpx;
+      object-fit: cover;
+      z-index: 2;
+      background-color: #e6e5eb;
+    }
+
+    .fold {
+      width: 90%;
+      height: 30rpx;
+      border-radius: 12rpx;
+      background-color: #e6e5eb;
+      transform-origin: right top;
+      transform: rotate(-5deg);
+      position: absolute;
+      top: -1rpx;
+      left: 10rpx;
+      z-index: 1;
+    }
+
+    .like-btn {
+      position: absolute;
+      top: 30rpx;
+      right: 10rpx;
+      width: 40rpx;
+      height: 40rpx;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+
+      image {
+        width: 24rpx;
+        height: 24rpx;
+      }
+
+      &--active {
+        color: #dc3b0f;
+      }
+    }
+
+    .vip-tag {
+      position: absolute;
+      top: 30rpx;
+      left: 10rpx;
+      width: 40rpx;
+      height: 40rpx;
+      line-height: 40rpx;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      color: #f1ca5c;
+      z-index: 2;
+
+      text {
+        font-size: 28rpx;
+      }
+    }
+  }
+}
+
+.loading-tips {
+  text-align: center;
+  padding: 20rpx 0;
+  color: #999;
+  font-size: 24rpx;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 10rpx;
+      border: 2rpx solid #999;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: loading 0.8s linear infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.tab-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  background: #fff;
+  display: flex;
+  padding-top: 20rpx;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1rpx solid #eee;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.08);
+  z-index: 99;
+
+  .tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .iconfont {
+      font-size: 45rpx;
+      line-height: 1;
+    }
+
+    text {
+      font-size: 24rpx;
+      color: #666;
+    }
+
+    &.active {
+      text {
+        color: #f9754c;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+.dialog__overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  filter: blur(12px);
+  z-index: 999;
+}
+.my-dialog {
+  // border: 1px red solid;
+  border-radius: 15rpx !important;
+  background: none !important;
+  // border: 1px red solid;
+
+  .dialog {
+    &__img {
+      position: relative;
+      width: 100%;
+      height: 50vh;
+      border-radius: 15rpx;
+      overflow: hidden;
+
+      &--main {
+        width: 100%;
+        height: 100%;
+      }
+
+      &--sub {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 300rpx;
+      }
+
+      &--btn {
+        position: absolute;
+        bottom: 156rpx;
+        left: 50%;
+        width: 120rpx;
+        height: 120rpx;
+        line-height: 120rpx;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 60rpx;
+        background-color: #e7cd9c;
+        color: #d8b471;
+        transform: translateX(-50%);
+        box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+      }
+    }
+
+    &__btn {
+      padding-top: 80rpx;
+      text-align: center;
+      color: #dc3b0f;
+
+      &--use {
+        width: 300rpx;
+        border-radius: 15rpx;
+        font-weight: bold;
+      }
+
+      icon {
+        display: block;
+        padding-top: 30rpx;
+        // color: #e6cea0;
+        // font-size: 60rpx;
+      }
+      text {
+        display: block;
+        padding-top: 30rpx;
+        color: #0f79e3;
+        font-size: 24rpx;
+      }
+    }
+  }
+}

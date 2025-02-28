@@ -1,0 +1,62 @@
+<page-meta>
+    <navigation-bar back="{{false}}" homeButton="{{false}}" color="#000" isCustomBg="{{true}}" background="none" fixed="{{true}}">
+        <view class="result-back" slot="left" bindtap="back">
+            <van-icon custom-class="result-icon" size="16px" name="arrow-left" />
+        </view>
+    </navigation-bar>
+</page-meta>
+<view class="result-img {{showAnimation ? 'slide-in' : ''}}">
+    <view class="image-wrapper">
+        <view class="image-blur-container">
+            <!-- <view class="blur-left">
+                <image src="{{cardResultInfo.coverUrl}}" mode="aspectFill" style="width: 100%; height: 100%;" />
+            </view>
+            <view class="blur-right">
+                <image src="{{cardResultInfo.coverUrl}}" mode="aspectFill" style="width: 100%; height: 100%;" />
+            </view> -->
+            <image class="wechat-icon" src="{{cardResultInfo.coverUrl}}" />
+            <!-- <image class="wechat-icon" src="{{cardResultInfo.coverUrl}}" mode="heightFix" /> -->
+        </view>
+    </view>
+    <!-- <image class="wechat-icon" src="{{cardResultInfo.coverUrl}}" mode="aspectFit" /> -->
+    <image class="result-img__white" src="../../images/common/card-tp-bg7.png" />
+    <!-- <view class="scroll-hint">
+        <view class="arrow-down"></view>
+    </view> -->
+    <!-- 背景音乐组件 -->
+    <bg-music wx:if="{{cardResultInfo.musicUrl}}" id="bgMusic" musicUrl="{{cardResultInfo.musicUrl}}" />
+</view>
+<view class="result-con {{showAnimation ? 'slide-in' : ''}}">
+    <view class="user">
+        <image class="wechat-icon" src="{{shareUserInfo.avatarUrl}}" mode="aspectFill" />
+        <text>{{shareUserInfo.nickName}}发来的贺卡</text>
+        <text class="edit" bindtap="goEditUser" wx:if="{{!shareCardId}}">修改</text>
+    </view>
+    <view class="dy">{{cardResultInfo.title}}</view>
+    <view class="con">
+        <!-- decode="{{true}}" user-select -->
+        <text decode="{{true}}">{{cardResultInfo.content}}</text>
+    </view>
+</view>
+<view class="dialog__overlay" wx:if="{{show}}"></view>
+<van-dialog custom-class="my-dialog" overlay="{{false}}" width="280" use-slot show="{{ cardDialogShow }}" showConfirmButton="{{false}}">
+    <view class="dialog__img">
+        <image class="dialog__img--main" src="{{cardResultInfo.coverUrl}}" mode="aspectFill" />
+        <!-- <image class="dialog__img--sub" src="../../images/common/card-bt-bg3.png" /> -->
+        <image class="dialog__img--sub" src="../../images/common/card-bottom.png" />
+        <view class="dialog__img--btn {{isRotating ? 'dialog__img--rotate-btn' : ''}}" bindtap="handleOpenCard">
+            拆
+        </view>
+    </view>
+    <view class="dialog__btn">
+        <!-- <van-button custom-class="dialog__btn--use" color="#fb674d">去使用</van-button> -->
+        <icon type="cancel" size="30" color="#c79958" bindtap="handleColseDialog"></icon>
+    </view>
+</van-dialog>
+<red-packet-rain show="{{showRain}}" packet-count="{{50}}" spacing="{{5}}" delay="{{0.3}}" max-rounds="{{3}}" image-url="{{rainParams.imgUrl}}" image-width="{{rainParams.imageWith}}" image-height="{{rainParams.imageHeight}}" />
+<!-- 烟花 -->
+<fireworks show="{{showFireworks}}" />
+<!-- 生日蛋糕动画 -->
+<birthday-cake show="{{showCake}}" />
+<!-- 火箭动画容器 -->
+<rocket show="{{showRocket}}" />

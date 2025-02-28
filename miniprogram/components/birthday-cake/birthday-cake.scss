@@ -1,0 +1,462 @@
+.cake-container {
+  position: fixed;
+  top: 50%;
+  left: -200rpx;
+  transform: translateY(-50%);
+  width: 400rpx;
+  height: 400rpx;
+  z-index: 999;
+  animation: cakeMove 7s ease-in-out forwards;
+
+  .cake {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 10rpx 15rpx rgba(0, 0, 0, 0.2));
+
+    // 蛋糕层 - 从上到下逐渐变大
+    .layer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 20rpx;
+
+      // 顶层（最小）
+      &-top {
+        bottom: 160rpx;
+        width: 180rpx;
+        height: 70rpx;
+        background: linear-gradient(135deg, #ff8a8a, #ffa5a5);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -25rpx;
+          left: 15rpx;
+          right: 15rpx;
+          height: 35rpx;
+          background: repeating-linear-gradient(
+            -45deg,
+            #fff,
+            #fff 10rpx,
+            #ffecec 10rpx,
+            #ffecec 20rpx
+          );
+          border-radius: 20rpx;
+        }
+      }
+
+      // 中层（中等）
+      &-middle {
+        bottom: 80rpx;
+        width: 260rpx;
+        height: 80rpx;
+        background: linear-gradient(135deg, #ff9eb4, #ffb5c5);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -30rpx;
+          left: 20rpx;
+          right: 20rpx;
+          height: 40rpx;
+          background: repeating-linear-gradient(
+            -45deg,
+            #fff,
+            #fff 12rpx,
+            #fff0f5 12rpx,
+            #fff0f5 24rpx
+          );
+          border-radius: 25rpx;
+        }
+      }
+
+      // 底层（最大）
+      &-bottom {
+        bottom: 0;
+        width: 340rpx;
+        height: 80rpx;
+        background: linear-gradient(135deg, #ffb5c5, #ffc5d5);
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -35rpx;
+          left: 25rpx;
+          right: 25rpx;
+          height: 45rpx;
+          background: repeating-linear-gradient(
+            -45deg,
+            #fff,
+            #fff 15rpx,
+            #fff5f8 15rpx,
+            #fff5f8 30rpx
+          );
+          border-radius: 30rpx;
+        }
+
+        // 生日快乐文字
+        &::after {
+          content: "生日快乐";
+          position: absolute;
+          bottom: 15rpx;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 32rpx;
+          color: #ff6b81;
+          font-weight: bold;
+          text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+          white-space: nowrap;
+          background: linear-gradient(to right, #ff6b81, #ff4757);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: textGlow 1.5s infinite alternate;
+        }
+      }
+    }
+
+    // 奶油装饰
+    .cream-dots {
+      position: absolute;
+
+      @for $i from 1 through 24 {
+        &-#{$i} {
+          width: 30rpx;
+          height: 30rpx;
+          background: #fff;
+          border-radius: 50%;
+          position: absolute;
+          bottom: 80rpx + random(160) rpx;
+          left: random(360) rpx;
+          box-shadow: inset 2rpx 2rpx 5rpx rgba(255, 182, 193, 0.5);
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 60%;
+            height: 60%;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            top: 20%;
+            left: 20%;
+          }
+        }
+      }
+    }
+
+    // 水果装饰
+    .fruits {
+      @for $i from 1 through 8 {
+        &-#{$i} {
+          position: absolute;
+          width: 40rpx;
+          height: 40rpx;
+          bottom: 160rpx + random(100) rpx;
+          left: 40rpx + $i * 45rpx;
+
+          &.strawberry {
+            background: radial-gradient(#ff4d4d, #ff3333);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            transform: rotate(random(360) + deg);
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: -15rpx;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 20rpx;
+              height: 15rpx;
+              background: #3c3;
+              border-radius: 0 0 10rpx 0;
+            }
+          }
+
+          &.blueberry {
+            background: radial-gradient(#6666ff, #3333ff);
+            border-radius: 50%;
+            transform: scale(0.8);
+          }
+        }
+      }
+    }
+
+    // 蜡烛
+    .candle {
+      position: absolute;
+      bottom: 230rpx;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+
+      .stick {
+        width: 12rpx;
+        height: 50rpx;
+        background: linear-gradient(to right, #ffd700, #ffc107);
+        margin: 0 auto;
+        border-radius: 6rpx;
+      }
+
+      .flame {
+        width: 24rpx;
+        height: 48rpx;
+        background: linear-gradient(to bottom, #fff176, #ffeb3b, #ffc107);
+        border-radius: 50% 50% 35% 35%;
+        margin: 0 auto;
+        animation: flicker 0.3s infinite alternate;
+        box-shadow: 0 0 20rpx #ffc107, 0 0 40rpx #ff9800, 0 0 60rpx #ff5722;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 12rpx;
+          height: 24rpx;
+          background: #ffffff;
+          border-radius: 50%;
+          opacity: 0.8;
+        }
+      }
+    }
+
+    // 巧克力装饰
+    .chocolate {
+      @for $i from 1 through 12 {
+        &-#{$i} {
+          position: absolute;
+          width: 15rpx;
+          height: random(30) + 20rpx;
+          background: linear-gradient(135deg, #4a3728, #2c1810);
+          bottom: random(200) + 80rpx;
+          left: random(320) + 20rpx;
+          transform: rotate(random(360) + deg);
+          border-radius: 2rpx;
+          box-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+
+  // 火焰闪烁动画
+  @keyframes flicker {
+    0%,
+    100% {
+      transform: scale(1) rotate(-5deg);
+      opacity: 1;
+    }
+
+    25% {
+      transform: scale(1.1) rotate(5deg);
+      opacity: 0.8;
+    }
+
+    50% {
+      transform: scale(0.9) rotate(-2deg);
+      opacity: 0.9;
+    }
+
+    75% {
+      transform: scale(1.2) rotate(2deg);
+      opacity: 0.7;
+    }
+  }
+
+  // 蛋糕移动动画
+  @keyframes cakeMove {
+    0% {
+      left: -200rpx; // 从左侧开始
+    }
+
+    20% {
+      left: 50%; // 移动到中间
+      transform: translate(-50%, -50%);
+    }
+
+    80% {
+      left: 50%; // 保持在中间
+      transform: translate(-50%, -50%);
+    }
+
+    100% {
+      left: 100vw; // 移动到右侧
+      transform: translate(0, -50%);
+    }
+  }
+
+  // 蜡烛火焰闪烁动画
+  @keyframes flicker {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    100% {
+      transform: scale(1.1);
+      opacity: 0.8;
+    }
+  }
+
+  // 文字发光动画
+  @keyframes textGlow {
+    from {
+      filter: drop-shadow(0 0 2rpx rgba(255, 107, 129, 0.6));
+    }
+
+    to {
+      filter: drop-shadow(0 0 8rpx rgba(255, 107, 129, 0.8));
+    }
+  }
+
+  // 礼花效果容器
+  .fireworks {
+    position: absolute;
+    width: 100%;
+    height: 200vh;
+    bottom: 150rpx;
+    pointer-events: none;
+
+    // 创建多个礼花
+    @for $i from 1 through 8 {
+      .firework-#{$i} {
+        position: absolute;
+        left: random(400) + 0rpx;
+        bottom: random(200) + 200rpx;
+        transform: scale(0);
+        transform-origin: center center;
+
+        // 礼花爆炸动画
+        animation: cakeExplode 2s ease-out infinite;
+        animation-delay: $i * 0.3s;
+
+        // 礼花粒子
+        @for $p from 1 through 12 {
+          .particle-#{$p} {
+            position: absolute;
+            width: 6rpx;
+            height: 30rpx;
+            border-radius: 3rpx;
+            transform-origin: center bottom;
+
+            // 随机礼花颜色
+            $colors: (
+              #ff6b81,
+              #ffd32a,
+              #0fb9b1,
+              #45aaf2,
+              #a55eea,
+              #26de81,
+              #fd9644,
+              #fc5c65
+            );
+            background: linear-gradient(
+              nth($colors, random(8)),
+              rgba(255, 255, 255, 0.8)
+            );
+
+            // 粒子轨迹动画
+            animation: particleFly 2s ease-out infinite;
+            animation-delay: $i * 0.3s;
+
+            &::before {
+              content: "";
+              position: absolute;
+              width: 6rpx;
+              height: 6rpx;
+              background: #fff;
+              border-radius: 50%;
+              top: 0;
+              left: 0;
+              box-shadow: 0 0 10rpx #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 礼花爆炸动画
+@keyframes cakeExplode {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+// 粒子飞行动画
+@keyframes particleFly {
+  0% {
+    transform: rotate(var(--rotation)) translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: rotate(var(--rotation)) translateY(100rpx) scale(0.8);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: rotate(var(--rotation)) translateY(200rpx) scale(0);
+    opacity: 0;
+  }
+}
+
+// 闪光点动画
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+// 添加背景遮罩
+.cake-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1; // 确保在蛋糕下面
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+// 遮罩渐入动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "open-process": "../../components/open-process/open-process"
+  },
+  "navigationStyle": "custom"
+}

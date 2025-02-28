@@ -1,0 +1,75 @@
+<!-- pages/card-list.wxml -->
+<page-meta>
+    <navigation-bar back="{{false}}" title="我的收藏" front-color="#000000" background-color="#ffffff" fixed="{{true}}"></navigation-bar>
+</page-meta>
+<view class="container">
+    <scroll-view scroll-y class="cards-container">
+        <!-- 骨架屏 -->
+        <view class="skeleton" wx:if="{{loading}}">
+            <van-skeleton title row="3" />
+        </view>
+        <view class="cards-row">
+            <view class="card-box" wx:for="{{popularCards}}" wx:key="_id">
+                <view class="card-item">
+                    <view class="fold"></view>
+                    <image src="{{item.coverUrl}}" lazy-load mode="aspectFill" bindtap="handleOpenDialog" data-item="{{item}}" />
+                    <view class="like-btn" catchtap="handleUnlike" data-id="{{item._id}}">
+                        <text class="iconfont icon-likefill {{item.isLiked ? 'like-btn--active' : ''}}" wx:if="{{item.isLiked}}"></text>
+                        <text class="iconfont icon-like" wx:else></text>
+                        <!-- <text class="like-count">{{item.likeCount}}</text> -->
+                    </view>
+                    <view class="vip-tag" wx:if="{{item.isVIP}}">
+                        <text class="iconfont icon-vip"></text>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <van-empty description="暂无收藏的贺卡" wx:if="{{!loading && popularCards.length === 0}}">
+            <van-button round color="#416162" size="normal" bindtap="handleTabBar" data-type="home">
+                去收藏喜欢的贺卡...
+            </van-button>
+        </van-empty>
+        <!-- 加载状态提示 -->
+        <view class="loading-tips">
+            <view wx:if="{{loading}}" class="loading">加载中...</view>
+            <view wx:elif="{{!hasMore}}" class="no-more">没有更多了</view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 底部导航栏 -->
+<view class="tab-bar safe-area-bottom">
+    <view class="tab-item" bindtap="handleTabBar" data-type="home">
+        <text class="iconfont icon-heqia"></text>
+        <text>贺卡</text>
+    </view>
+    <view class="tab-item active" bindtap="handleTabBar" data-type="favorite">
+        <text class="iconfont icon-shoucang"></text>
+        <text>我的收藏</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="sendCard">
+        <text class="iconfont icon-fasong"></text>
+        <text>发出的贺卡</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="person">
+        <text class="iconfont icon-geren"></text>
+        <text>个人主页</text>
+    </view>
+</view>
+<!-- 去使用 - 弹窗 -->
+<view class="dialog__overlay" wx:if="{{dialogShow}}"></view>
+<van-dialog custom-class="my-dialog" overlay="{{false}}" width="280" use-slot show="{{ dialogShow }}" showConfirmButton="{{false}}">
+    <view class="dialog__img">
+        <image class="dialog__img--main" src="{{imageUrl}}" mode="aspectFill" />
+        <image class="dialog__img--sub" src="../../images/common/card-bottom.png" />
+        <view class="dialog__img--btn">拆</view>
+    </view>
+    <view class="dialog__btn">
+        <van-button custom-class="dialog__btn--use" color="#fb674d" bindtap="handleGoUse">
+            去使用
+        </van-button>
+        <icon type="cancel" size="30" color="#c79958" bindtap="handleColseDialog"></icon>
+    </view>
+</van-dialog>
+<van-action-sheet show="{{ openProcessShow }}" title="免费获得VIP会员" bind:close="handleOpenProcessCancel">
+    <open-process></open-process>
+</van-action-sheet>

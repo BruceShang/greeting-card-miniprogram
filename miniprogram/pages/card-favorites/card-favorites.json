@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-skeleton": "@vant/weapp/skeleton/index",
+    "van-action-sheet": "@vant/weapp/action-sheet/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "open-process": "../../components/open-process/open-process"
+  },
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

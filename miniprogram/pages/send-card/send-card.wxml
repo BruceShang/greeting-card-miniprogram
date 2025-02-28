@@ -1,0 +1,60 @@
+<!-- pages/send-card/send-card.wxml -->
+<page-meta>
+    <navigation-bar back="{{false}}" title="发出的贺卡" front-color="#000000" background-color="#ffffff" fixed="{{true}}"></navigation-bar>
+</page-meta>
+<view class="container">
+    <scroll-view scroll-y class="cards-container">
+        <view class="cards-row">
+            <view class="card-box" wx:for="{{popularCards}}" wx:key="_id">
+                <view class="card-item">
+                    <view class="image">
+                        <image src="{{item.coverUrl}}" lazy-load mode="aspectFill" bindtap="goCardResult" data-item="{{item}}" />
+                    </view>
+                    <view class="bottom">
+                        <view class="bottom__title">{{item.title}}</view>
+                        <view class="bottom__con">{{item.content}}</view>
+                        <view class="bottom__des">
+                            <view>{{item.createdAt}}</view>
+                            <view class="bottom__des--receive">
+                                <text>{{item.receiveCount || 0}}</text>
+                                人领取
+                            </view>
+                        </view>
+                        <view class="bottom__oper">
+                            <van-button class="bottom__oper--see" icon="delete-o" round plain type="primary" size="mini" bindtap="goCardResult" data-item="{{item}}">
+                                查看
+                            </van-button>
+                            <van-button icon="delete-o" round plain type="danger" size="mini" bindtap="handleDelete" data-id="{{item._id}}">
+                                删除
+                            </van-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 加载状态提示 -->
+        <view class="loading-tips">
+            <view wx:if="{{loading}}" class="loading">加载中...</view>
+            <view wx:elif="{{!hasMore}}" class="no-more">没有更多了</view>
+        </view>
+    </scroll-view>
+</view>
+<!-- 底部导航栏 -->
+<view class="tab-bar safe-area-bottom">
+    <view class="tab-item" bindtap="handleTabBar" data-type="home">
+        <text class="iconfont icon-heqia"></text>
+        <text>贺卡</text>
+    </view>
+    <view class="tab-item " bindtap="handleTabBar" data-type="favorite">
+        <text class="iconfont icon-shoucang"></text>
+        <text>我的收藏</text>
+    </view>
+    <view class="tab-item active" bindtap="handleTabBar" data-type="sendCard">
+        <text class="iconfont icon-fasong"></text>
+        <text>发出的贺卡</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="person">
+        <text class="iconfont icon-geren"></text>
+        <text>个人主页</text>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+<view class="music-control" bindtap="togglePlay">
+  <image class="music-icon {{isPlaying ? 'playing' : ''}}" src="{{playerIcon}}" />
+</view>

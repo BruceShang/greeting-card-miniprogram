@@ -1,0 +1,242 @@
+// 火箭动画样式
+.rocket-container {
+  position: fixed;
+  bottom: -100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160rpx;
+  height: 300rpx;
+  z-index: 999;
+  animation: rocketLaunch 3.5s ease-in-out forwards;
+
+  .rocket {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    // 火箭主体
+    .rocket-body {
+      position: absolute;
+      bottom: 60rpx;
+      width: 80rpx;
+      height: 200rpx;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(
+        135deg,
+        #ff3333 0%,
+        #ff5656 50%,
+        #ff3333 100%
+      );
+      border-radius: 40rpx 40rpx 15rpx 15rpx;
+      box-shadow: -3rpx 3rpx 8rpx rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+
+      // 窗口
+      .window {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 36rpx;
+        height: 36rpx;
+        background: #c7eeff;
+        border-radius: 50%;
+        border: 6rpx solid #383838;
+        box-shadow: inset 0 0 10rpx rgba(255, 255, 255, 0.8);
+        z-index: 2;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: 20%;
+          left: 20%;
+          width: 30%;
+          height: 30%;
+          background: rgba(255, 255, 255, 0.9);
+          border-radius: 50%;
+        }
+      }
+
+      // 装饰条纹
+      .stripes {
+        position: absolute;
+        top: 60%;
+        width: 100%;
+        height: 20rpx;
+        background: #383838;
+      }
+    }
+
+    // 火箭尾翼
+    .rocket-fin {
+      position: absolute;
+      bottom: 70rpx;
+      width: 30rpx;
+      height: 60rpx;
+      background: linear-gradient(90deg, #ff4444 0%, #ff6666 100%);
+      box-shadow: -2rpx 2rpx 4rpx rgba(0, 0, 0, 0.2);
+
+      &-left {
+        left: 15rpx;
+        transform: skew(30deg);
+        border-radius: 5rpx 0 0 5rpx;
+      }
+
+      &-right {
+        right: 15rpx;
+        transform: skew(-30deg);
+        border-radius: 0 5rpx 5rpx 0;
+      }
+    }
+
+    // 火箭喷射焰
+    .rocket-fire {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      .fire-main {
+        width: 40rpx;
+        height: 80rpx;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 217, 0, 1) 0%,
+          rgba(255, 126, 0, 1) 50%,
+          rgba(255, 126, 0, 0) 100%
+        );
+        border-radius: 50% 50% 20% 20%;
+        animation: fireMain 0.1s infinite;
+        filter: blur(2rpx);
+      }
+
+      .fire-particle {
+        position: absolute;
+        bottom: 0;
+        width: 15rpx;
+        height: 40rpx;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 126, 0, 1) 0%,
+          rgba(255, 78, 0, 0) 100%
+        );
+        border-radius: 50%;
+        animation: fireParticle 0.4s infinite;
+        filter: blur(1rpx);
+
+        &:nth-child(2) {
+          left: -20rpx;
+          animation-delay: 0.1s;
+        }
+
+        &:nth-child(3) {
+          animation-delay: 0.2s;
+        }
+
+        &:nth-child(4) {
+          right: -20rpx;
+          animation-delay: 0.3s;
+        }
+      }
+    }
+  }
+}
+
+// 火箭升空动画
+@keyframes rocketLaunch {
+  0% {
+    bottom: -100rpx;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  // 初始上升 (0.8秒)
+  20% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  // 中间停顿 1.5 秒（20% - 65%）
+  21% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  35% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(2deg);
+  }
+
+  50% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(-2deg);
+  }
+
+  64% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  // 快速升空 (1.2秒)
+  65% {
+    bottom: 40vh;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  100% {
+    bottom: 120vh;
+    transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+// 主火焰动画
+@keyframes fireMain {
+  0%,
+  100% {
+    height: 80rpx;
+    opacity: 0.8;
+  }
+
+  50% {
+    height: 90rpx;
+    opacity: 1;
+  }
+}
+
+// 火焰粒子动画
+@keyframes fireParticle {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(30rpx) scale(0);
+    opacity: 0;
+  }
+}
+
+// 添加背景遮罩
+.cake-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1; // 确保在蛋糕下面
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+// 遮罩渐入动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

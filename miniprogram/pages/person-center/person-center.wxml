@@ -1,0 +1,82 @@
+<!-- pages/card-center/card-center.wxml -->
+<page-meta>
+    <navigation-bar back="{{false}}" title="" homeButton="{{false}}" color="#000" isCustomBg="{{true}}" background="none" fixed="{{true}}">
+        <!-- <view class="center-back" slot="left">个人主页</view> -->
+    </navigation-bar>
+</page-meta>
+<view class="center-img">
+    <view class="profile" bindtap="goEditUser">
+        <view class="profile__img">
+            <image class="wechat-icon" src="{{userInfoDetail.avatarUrl}}" mode="aspectFill" />
+            <!-- <text class="iconfont icon-vip"></text> -->
+        </view>
+        <view wx:if="{{userInfoDetail.nickName}}">
+            <view class="user-name">
+                {{userInfoDetail.nickName}}
+                <text wx:if="{{userInfoDetail.isVIP}}">VIP</text>
+            </view>
+            <text class="user-No">WL{{userInfoDetail.userNo}}</text>
+        </view>
+    </view>
+    <view class="edit" bindtap="goEditUser">
+        <van-icon name="arrow" size="38rpx" />
+        <!-- <text class="iconfont icon-a-youjiantouzhixiangyoujiantou"></text> -->
+    </view>
+</view>
+<view class="center-form">
+    <van-cell-group inset custom-class="center-cell-group1">
+        <!-- <van-cell title="发出的贺卡" bindtap="goPage" data-type="sendCard">
+            <van-icon name="send-gift-o" size="38rpx" />
+        </van-cell> -->
+        <van-cell title="领取的贺卡" bindtap="goPage" data-type="received">
+            <van-icon name="point-gift-o" size="38rpx" />
+        </van-cell>
+        <!-- <van-cell title="会员特权" bindtap="goPage" data-type="vip">
+            <van-icon name="vip-card-o" size="38rpx" />
+        </van-cell> -->
+    </van-cell-group>
+    <view class="center-cell-group2">
+        <van-cell-group inset custom-class="center-cell-group2">
+            <van-cell title="联系我们" bindtap="goPage" data-type="feedback">
+                <van-icon name="comment-o" size="38rpx" />
+            </van-cell>
+            <van-cell title="关于我们" bindtap="goPage" data-type="aboutUs">
+                <van-icon name="friends-o" size="38rpx" />
+            </van-cell>
+        </van-cell-group>
+    </view>
+    <!-- <view class="center-cell-group2">
+        <van-cell-group inset custom-class="center-cell-group2">
+            <van-cell title="会员特权" bindtap="goPage" data-type="vip">
+                <van-icon name="vip-card-o" size="38rpx" />
+            </van-cell>
+        </van-cell-group>
+    </view> -->
+</view>
+<!-- <view class="center-submit">
+    <button class="btn btn--preview" bindtap="handleOpenProcess">
+        开通会员
+    </button>
+</view> -->
+<!-- 底部导航栏 -->
+<view class="tab-bar safe-area-bottom">
+    <view class="tab-item" bindtap="handleTabBar" data-type="home">
+        <text class="iconfont icon-heqia"></text>
+        <text>贺卡</text>
+    </view>
+    <view class="tab-item " bindtap="handleTabBar" data-type="favorite">
+        <text class="iconfont icon-shoucang"></text>
+        <text>我的收藏</text>
+    </view>
+    <view class="tab-item" bindtap="handleTabBar" data-type="sendCard">
+        <text class="iconfont icon-fasong"></text>
+        <text>发出的贺卡</text>
+    </view>
+    <view class="tab-item active" bindtap="handleTabBar" data-type="person">
+        <text class="iconfont icon-geren"></text>
+        <text>个人主页</text>
+    </view>
+</view>
+<van-action-sheet show="{{ openProcessShow }}" title="VIP开通流程" bind:close="handleOpenProcessCancel">
+    <open-process></open-process>
+</van-action-sheet>

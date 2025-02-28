@@ -1,0 +1,190 @@
+.firework-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 998;
+
+  .firework {
+    position: absolute;
+    bottom: 0;
+    transform: scale(1);
+
+    // 发射轨迹
+    .rocket {
+      position: absolute;
+      width: 4rpx;
+      height: 4rpx;
+      background: linear-gradient(#ffeb3b, #ff9800); // 火焰色
+      border-radius: 50%;
+      box-shadow: 0 0 10rpx #ff9800; // 火焰色光晕
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        width: 4rpx;
+        height: 20rpx;
+        background: linear-gradient(#ff9800, transparent); // 火焰色尾迹
+      }
+
+      // 添加火花效果
+      &::after {
+        content: "";
+        position: absolute;
+        width: 8rpx;
+        height: 8rpx;
+        background: radial-gradient(#fff, #ff9800);
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: sparkFlicker 0.3s infinite alternate;
+      }
+    }
+
+    // 爆炸效果
+    .explosion {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      // 创建36个粒子
+      @for $i from 1 through 36 {
+        .particle-#{$i} {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 6rpx;
+          height: 40rpx;
+          background: linear-gradient(
+            nth(
+              #ff6b81 #ffd32a #0fb9b1 #45aaf2 #a55eea #26de81 #fd9644 #fc5c65,
+              random(8)
+            ),
+            transparent 80%
+          );
+          border-radius: 3rpx;
+          transform: rotate(#{$i * 10}deg) translateY(15rpx);
+          opacity: 0;
+          transform-origin: top;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(2rpx);
+          }
+        }
+      }
+    }
+
+    &.active {
+      animation: launch 1.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+
+      .rocket {
+        animation: rocketFade 0.5s ease-out forwards 1s;
+      }
+
+      .explosion {
+        .particle-1 {
+          animation: explode 1.5s ease-out forwards 1s;
+        }
+
+        .particle-2 {
+          animation: explode 1.5s ease-out forwards 1s;
+        }
+
+        // ... 其他粒子动画
+        @for $i from 1 through 36 {
+          .particle-#{$i} {
+            animation: explode 1.5s ease-out forwards 1s;
+            transform: rotate(#{$i * 10}deg) translateY(15rpx);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes launch {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    transform: translateY(-70vh) scale(1);
+  }
+}
+
+@keyframes rocketFade {
+  to {
+    opacity: 0;
+    transform: scale(3);
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: rotate(var(--angle)) translateY(15rpx);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  30% {
+    transform: rotate(var(--angle)) translateY(200rpx);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(var(--angle)) translateY(400rpx);
+    opacity: 0;
+  }
+}
+
+// 添加火花闪烁动画
+@keyframes sparkFlicker {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+// 添加背景遮罩
+.cake-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1; // 确保在蛋糕下面
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+// 遮罩渐入动画
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

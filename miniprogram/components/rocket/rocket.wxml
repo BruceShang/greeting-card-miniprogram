@@ -1,0 +1,18 @@
+<!-- components/rocket/rocket.wxml -->
+<view class="rocket-container" wx:if="{{show}}">
+    <view class="rocket {{isLaunching ? 'launching' : ''}}">
+        <view class="rocket-body">
+            <view class="window"></view>
+        </view>
+        <view class="rocket-fin rocket-fin-left"></view>
+        <view class="rocket-fin rocket-fin-right"></view>
+        <view class="rocket-fire">
+            <view class="fire-main"></view>
+            <view class="fire-particle"></view>
+            <view class="fire-particle"></view>
+            <view class="fire-particle"></view>
+        </view>
+    </view>
+</view>
+<!-- 添加背景遮罩 -->
+<view class="cake-mask" wx:if="{{show}}"></view>

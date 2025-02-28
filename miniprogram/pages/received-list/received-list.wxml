@@ -1,0 +1,47 @@
+<!-- pages/send-card/send-card.wxml -->
+<page-meta>
+    <navigation-bar back="{{true}}" title="领取的卡片" front-color="#000000" background-color="#ffffff" fixed="{{true}}"></navigation-bar>
+</page-meta>
+<view class="container">
+    <scroll-view scroll-y class="cards-container">
+        <view class="cards-row">
+            <view class="card-box" wx:for="{{popularCards}}" wx:key="_id">
+                <!-- <view class="card-item">
+                    <image src="{{item.coverUrl}}" lazy-load mode="aspectFill" bindtap="goCardResult" data-item="{{item}}" />
+                    <view class="bottom">
+                        <view class="bottom__title">{{item.title}}</view>
+                        <view class="bottom__des">
+                            <view>领取时间</view>
+                            <view class="bottom__value">{{item.receiveTime}}</view>
+                        </view>
+                    </view>
+                </view> -->
+                <view class="card-item">
+                    <view class="image">
+                        <image src="{{item.coverUrl}}" lazy-load mode="aspectFill" bindtap="goCardResult" data-item="{{item}}" />
+                    </view>
+                    <view class="bottom">
+                        <view class="bottom__title">{{item.title}}</view>
+                        <view class="bottom__con">{{item.content}}</view>
+                        <view class="bottom__des">
+                            <view>{{item.receiveTime}}</view>
+                        </view>
+                        <view class="bottom__oper">
+                            <van-button class="bottom__oper--see" icon="delete-o" round plain type="primary" size="mini" bindtap="goCardResult" data-item="{{item}}">
+                                查看
+                            </van-button>
+                            <van-button icon="delete-o" round plain type="danger" size="mini" bindtap="handleDelete" data-id="{{item._id}}">
+                                删除
+                            </van-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!-- 加载状态提示 -->
+        <view class="loading-tips">
+            <view wx:if="{{loading}}" class="loading">加载中...</view>
+            <view wx:elif="{{!hasMore}}" class="no-more">没有更多了</view>
+        </view>
+    </scroll-view>
+</view>

@@ -1,0 +1,97 @@
+<!-- pages/problem-feedback/problem-feedback.wxml -->
+<page-meta>
+    <navigation-bar title="问题反馈" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+</page-meta>
+<view class="container">
+    <!-- 问题类型选择 -->
+    <view class="section">
+        <view class="section-title">
+            <text class="required">*</text>
+            <view>选择反馈问题类型</view>
+        </view>
+        <van-radio-group value="{{ type }}">
+            <view class="type-grid">
+                <view class="type-item {{type === 'bug' ? 'type-item--active' : ''}}" bindtap="onTypeHandle" data-type="bug">
+                    <van-radio name="bug" checked-color="#416162" icon-size="36rpx">
+                        <view class="type-content">
+                            <text class="iconfont icon-bug"></text>
+                            <text>BUG/错误反馈</text>
+                        </view>
+                    </van-radio>
+                </view>
+                <view class="type-item {{type === 'cooperation' ? 'type-item--active' : ''}}" bindtap="onTypeHandle" data-type="cooperation">
+                    <van-radio name="cooperation" checked-color="#416162" icon-size="36rpx">
+                        <view class="type-content">
+                            <text class="iconfont icon-cooperation"></text>
+                            <text>合作</text>
+                        </view>
+                    </van-radio>
+                </view>
+                <!-- <view class="type-item {{type === 'cooperation' ? 'type-item--active' : ''}}" bindtap="onTypeHandle" data-type="cooperation">
+                    <van-radio name="cooperation" checked-color="#416162" icon-size="36rpx">
+                        <view class="type-content">
+                            <text class="iconfont icon-cooperation"></text>
+                            <text>开通会员</text>
+                        </view>
+                    </van-radio>
+                </view> -->
+                <view class="type-item {{type === 'suggestion' ? 'type-item--active' : ''}}" bindtap="onTypeHandle" data-type="suggestion">
+                    <van-radio name="suggestion" checked-color="#416162" icon-size="36rpx">
+                        <view class="type-content">
+                            <text class="iconfont icon-suggestion"></text>
+                            <text>意见反馈</text>
+                        </view>
+                    </van-radio>
+                </view>
+                <view class="type-item {{type === 'other' ? 'type-item--active' : ''}}" bindtap="onTypeHandle" data-type="other">
+                    <van-radio name="other" checked-color="#416162" icon-size="36rpx">
+                        <view class="type-content">
+                            <text class="iconfont icon-other"></text>
+                            <text>其他</text>
+                        </view>
+                    </van-radio>
+                </view>
+            </view>
+        </van-radio-group>
+    </view>
+    <!-- 问题描述 -->
+    <view class="section">
+        <view class="section-title">
+            <text class="required">*</text>
+            <view class="sub-title">
+                <view>问题和反馈内容</view>
+                <text>（最少输入5个字符）</text>
+            </view>
+        </view>
+        <van-field value="{{ content }}" type="textarea" placeholder="请详细描述您遇到的问题或建议..." autosize="{{ {minHeight: 120} }}" maxlength="{{ 120 }}" show-word-limit border="{{ false }}" bind:change="onContentChange" />
+    </view>
+    <!-- 上传图片 -->
+    <view class="section">
+        <view class="section-title">
+            <!-- <text class="required" wx:if="{{type === 'cooperation'}}">*</text> -->
+            <text>上传图片</text>
+            <text class="tips">最多上传3张</text>
+        </view>
+        <view class="upload-wrapper">
+            <view class="image-list">
+                <view class="image-item" wx:for="{{ images }}" wx:key="*this">
+                    <image src="{{ item }}" mode="aspectFill" bindtap="previewImage" data-url="{{ item }}" />
+                    <view class="delete-btn" catchtap="deleteImage" data-index="{{ index }}">
+                        <!-- <text class="iconfont icon-close"></text> -->
+                        <van-icon name="cross" color="white" />
+                    </view>
+                </view>
+                <view class="upload-btn" bindtap="chooseImage" wx:if="{{ images.length < 3 }}">
+                    <!-- <text class="iconfont icon-add"></text> -->
+                    <van-icon name="plus" size="24px" />
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 提交按钮 -->
+    <view class="submit-section">
+        <van-button type="primary" block color="#416162" disabled="{{ !isValid }}" loading="{{ submitting }}" bind:click="onSubmit">
+            提交
+        </van-button>
+    </view>
+</view>

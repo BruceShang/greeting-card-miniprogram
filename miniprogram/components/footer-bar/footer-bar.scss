@@ -1,0 +1,85 @@
+.footer-bar {
+  position: relative;
+  height: 50px;
+  display: flex;
+  background: #fff;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: content-box;
+
+  &-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+
+  &-border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(0.5);
+  }
+
+  &-item {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    &__icon {
+      position: relative;
+      margin-bottom: 4px;
+
+      image {
+        width: 27px;
+        height: 27px;
+        display: block;
+      }
+    }
+
+    &__badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      min-width: 16px;
+      height: 16px;
+      line-height: 16px;
+      padding: 0 4px;
+      font-size: 12px;
+      border-radius: 8px;
+      background: #ff4d4f;
+      color: #fff;
+      text-align: center;
+    }
+
+    &__dot {
+      position: absolute;
+      top: 0;
+      right: -6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ff4d4f;
+    }
+  }
+}
+
+// 适配 iPhone X 等机型底部安全区域
+@supports (padding-bottom: constant(safe-area-inset-bottom)) {
+  .footer-bar {
+    padding-bottom: constant(safe-area-inset-bottom);
+  }
+}
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .footer-bar {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}

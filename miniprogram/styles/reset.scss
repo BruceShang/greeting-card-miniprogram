@@ -1,0 +1,71 @@
+/* 重置所有元素的默认样式 */
+view, scroll-view, swiper, swiper-item, movable-area, movable-view, cover-view, 
+cover-image, icon, text, rich-text, progress, button, checkbox, form, input, 
+label, picker, picker-view, radio, slider, switch, textarea, navigator, 
+audio, camera, image, video {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* 重置按钮样式 */
+button {
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  border-radius: 0;
+}
+
+button::after {
+  border: none;
+}
+
+/* 重置图片样式 */
+image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* 清除浮动 */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* 文本溢出省略号 */
+.text-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* 多行文本溢出省略号 */
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* 去除滚动条 */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 禁止长按菜单 */
+page {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  font-size: 28rpx;
+  color: #333;
+  background-color: #f8f8f8;
+}

@@ -1,0 +1,65 @@
+/* components/open-process/open-process.wxss */
+.a-sheet {
+  &__content {
+    padding: 30rpx;
+    padding-top: 45rpx;
+
+    .item {
+      padding-bottom: 40rpx;
+      &__title {
+        font-size: 28rpx;
+        font-weight: bold;
+      }
+
+      &__des {
+        padding-left: 20rpx;
+        font-size: 28rpx;
+        color: #999;
+
+        text {
+          line-height: 1.6;
+        }
+
+        .sign {
+          font-size: 20rpx;
+        }
+
+        .p {
+          display: block;
+        }
+      }
+
+      &__pay-code {
+        width: 350rpx;
+        height: 350rpx;
+        text-align: center;
+        margin: 30rpx auto;
+
+        image {
+          width: 100%;
+          height: 100%;
+        }
+
+        text {
+          margin: auto;
+          text-align: center;
+          font-size: 24rpx;
+          color: #999;
+        }
+      }
+    }
+
+    .btn-share {
+      width: 700rpx;
+      margin: 0 auto;
+      margin-top: 60rpx;
+      padding: 25rpx 50rpx;
+      border-radius: 15rpx;
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: bolder;
+      color: #fff;
+      background-color: #416162;
+    }
+  }
+}

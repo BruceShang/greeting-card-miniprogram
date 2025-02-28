@@ -1,0 +1,14 @@
+{
+  "timeout": 5,
+  "memorySize": 256,
+  "triggers": [
+    {
+      "name": "warmup",
+      "type": "timer",
+      "config": "0 */5 * * * * *"
+    }
+  ],
+  "permissions": {
+    "openapi": []
+  }
+}

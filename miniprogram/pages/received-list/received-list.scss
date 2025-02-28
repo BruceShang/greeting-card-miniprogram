@@ -1,0 +1,180 @@
+.container {
+  padding: 10rpx;
+}
+
+.cards-container {
+  // padding-bottom: 150rpx;
+}
+
+.cards-row {
+  // display: flex;
+  // flex-wrap: wrap;
+  padding: 10rpx 0rpx;
+
+  .card-box {
+    padding: 0 12rpx;
+  }
+
+  .card-item {
+    display: flex;
+    width: 100%;
+    margin-top: 24rpx;
+    position: relative;
+    border-radius: 16rpx;
+    box-shadow: 0 4rpx 5rpx rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    background-color: #fff;
+
+    .image {
+      width: 330rpx;
+      height: 300rpx;
+    }
+
+    image {
+      display: inline-block;
+      position: relative;
+      width: 330rpx;
+      height: 300rpx;
+      // border-top-left-radius: 16rpx;
+      // border-top-right-radius: 16rpx;
+      // object-fit: cover;
+      z-index: 2;
+      background-color: #e6e5eb;
+    }
+
+    .like-btn {
+      position: absolute;
+      top: 20rpx;
+      right: 20rpx;
+      width: 40rpx;
+      height: 40rpx;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+
+      image {
+        width: 24rpx;
+        height: 24rpx;
+      }
+
+      &--active {
+        color: #dc3b0f;
+      }
+    }
+
+    .vip-tag {
+      position: absolute;
+      top: 20rpx;
+      left: 20rpx;
+      width: 40rpx;
+      height: 40rpx;
+      z-index: 2;
+    }
+
+    .bottom {
+      position: relative;
+      padding: 12rpx 20rpx;
+      padding-bottom: 20rpx;
+      flex: 1;
+
+      &__title {
+        width: 330rpx;
+        overflow: hidden; // 溢出隐藏
+        text-overflow: ellipsis; // 显示省略符号
+        white-space: nowrap; // 不换行
+        // 如果需要显示两行，可以使用下面的多行省略方式
+        // display: -webkit-box;
+        // -webkit-line-clamp: 2;
+        // -webkit-box-orient: vertical;
+        // white-space: normal;
+        padding-bottom: 20rpx;
+        font-size: 30rpx;
+        font-weight: 700;
+        color: #333;
+      }
+
+      &__con {
+        overflow: hidden; // 溢出隐藏
+        text-overflow: ellipsis; // 显示省略符号
+        white-space: nowrap; // 不换行
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+        color: #999;
+      }
+
+      &__des {
+        position: absolute;
+        bottom: 85rpx;
+        display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        padding-top: 20rpx;
+        font-size: 24rpx;
+        color: #999;
+
+        text {
+          flex: 1;
+          font-weight: bolder;
+          color: #dc3b0f;
+        }
+
+        &--receive {
+          width: 190rpx;
+          text-align: right;
+        }
+      }
+
+      &__oper {
+        position: absolute;
+        width: 330rpx;
+        right: 30rpx;
+        bottom: 20rpx;
+        padding-top: 15rpx;
+        text-align: right;
+
+        &--see {
+          margin-right: 20rpx;
+        }
+      }
+    }
+  }
+}
+
+.loading-tips {
+  text-align: center;
+  padding: 20rpx 0;
+  color: #999;
+  font-size: 24rpx;
+
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before {
+      content: "";
+      width: 30rpx;
+      height: 30rpx;
+      margin-right: 10rpx;
+      border: 2rpx solid #999;
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: loading 0.8s linear infinite;
+    }
+  }
+}
+
+@keyframes loading {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

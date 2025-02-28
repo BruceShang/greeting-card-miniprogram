@@ -1,0 +1,21 @@
+<!-- pages/edit-user/edit-user.wxml -->
+<page-meta>
+  <navigation-bar back="{{true}}" title="个人资料" homeButton="{{false}}" color="#000" fixed="{{true}}"></navigation-bar>
+</page-meta>
+<view class="container">
+  <view class="avatar-wrapper">
+    <button class="avatar-btn" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{avatarUrl}}"></image>
+    </button>
+    <text class="tips">点击更换头像</text>
+  </view>
+  <view class="form-wrapper">
+    <form bindsubmit="onSubmit">
+      <view class="form-item">
+        <text class="label">昵称</text>
+        <input type="nickname" class="nickname-input" placeholder="请输入昵称" name="nickname" value="{{nickName}}" />
+      </view>
+      <button class="submit-btn" form-type="submit">保存</button>
+    </form>
+  </view>
+</view>

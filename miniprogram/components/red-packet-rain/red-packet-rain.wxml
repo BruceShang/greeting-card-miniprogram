@@ -1,0 +1,8 @@
+<!-- components/red-packet-rain/red-packet-rain.wxml -->
+<view class="red-packet-rain" wx:if="{{show}}">
+    <view class="red-packet" 
+          wx:for="{{packetCount}}" 
+          wx:key="*this" 
+          style="left: {{index * spacing}}%; animation-delay: {{index * delay}}s; width: {{imageWidth}}rpx; height: {{imageHeight}}rpx; background-image: url('{{imageUrl}}');">
+    </view>
+</view>

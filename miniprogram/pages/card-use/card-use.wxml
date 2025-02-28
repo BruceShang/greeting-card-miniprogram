@@ -1,0 +1,126 @@
+<!-- pages/card-use/card-use.wxml -->
+<page-meta>
+    <navigation-bar homeButton="{{false}}" title="编辑贺卡" color="#000" fixed="{{true}}">
+        <view class="use-back" slot="left" bindtap="back">
+            <van-icon custom-class="use-icon" size="16px" name="arrow-left" />
+        </view>
+    </navigation-bar>
+    <!-- <navigation-bar back="{{false}}" homeButton="{{false}}" color="#000" isCustomBg="{{true}}" background="none" fixed="{{true}}">
+        <view class="use-back" slot="left" bindtap="back">
+            <van-icon custom-class="use-icon" size="16px" name="arrow-left" />
+        </view>
+    </navigation-bar> -->
+</page-meta>
+<view class="use-img">
+    <image class="wechat-icon" src="{{cardItemInfo.coverUrl}}" mode="aspectFit" />
+    <!-- <image class="wechat-icon" src="{{cardItemInfo.coverUrl}}" mode="heightFix" /> -->
+</view>
+<view class="use-form">
+    <van-cell-group custom-class="use-cell-group">
+        <van-field value="{{ title }}" clearable label="贺卡标题" placeholder="贺卡标题" bind:change="onTitleChange" />
+        <van-field value="{{ content }}" clearable show-word-limit maxlength="80" label="贺卡正文" type="textarea" placeholder="请输入贺卡正文" autosize="{{autosize}}" bind:change="onContentChange"></van-field>
+        <van-cell title="动画特效" value="{{dynamicCellLabel}}" is-link bindtap="handleDynamicEffect" />
+        <!-- <van-cell title="动画特效" value="红包雨" is-link bindtap="handleEffect" /> -->
+        <!-- <van-cell title="动画特效" value="火箭🚀" is-link bindtap="startRocket" />
+        <van-cell title="动画特效" value="生日蛋糕" is-link bindtap="startCake" />
+        <van-cell title="动画特效" value="烟花" is-link bindtap="startFireworks" /> -->
+    </van-cell-group>
+</view>
+<view class="use-submit">
+    <button class="btn btn--preview" bindtap="goPreviewPage">
+        <text class="iconfont icon-yulan" />
+        预览
+    </button>
+    <!-- 不满足条件 -->
+    <button class="btn btn--send" wx:if="{{!title || !content}}" bindtap="onSend">
+        <text class="iconfont icon-fasong" />
+        发送
+    </button>
+    <!-- 满足条件 -->
+    <button class="btn btn--send" wx:else open-type="share" bindtap="onSend">
+        <text class="iconfont icon-fasong" />
+        发送
+    </button>
+</view>
+<!-- 预览、发送、收藏 、特效模版、正文推荐、祝福短语 -->
+<view class="footer-box safe-area-bottom">
+    <view class="footer">
+        <view class="box">
+            <!-- <view class="box__item box__item-share">
+                <button bindtap="handleDy">
+                    <text class="iconfont icon-kuaijieduanyu"></text>
+                    <view class="box__text">祝福短语</view>
+                </button>
+            </view> -->
+            <view class="box__item box__item-share">
+                <button bindtap="handleDynamicEffect">
+                    <text class="iconfont icon-texiao1"></text>
+                    <view class="box__text">动画特效</view>
+                </button>
+            </view>
+            <view class="box__item box__item-share">
+                <button bindtap="handleContent">
+                    <text class="iconfont icon-wenan"></text>
+                    <view class="box__text">贺卡正文</view>
+                </button>
+            </view>
+            <view class="box__item box__item-share">
+                <button bindtap="handleLike">
+                    <text class="iconfont icon-likefill {{cardItemInfo.isLiked ? 'like-btn--active' : ''}}" wx:if="{{cardItemInfo.isLiked}}"></text>
+                    <text class="iconfont icon-like" wx:else></text>
+                    <view class="box__text {{cardItemInfo.isLiked ? 'like-btn--active' : ''}}" wx:if="{{cardItemInfo.isLiked}}">
+                        取消
+                    </view>
+                    <view class="box__text" wx:else>收藏</view>
+                </button>
+            </view>
+        </view>
+    </view>
+</view>
+<van-action-sheet show="{{ contentShow }}" title="贺卡正文" bind:close="handleCancel">
+    <view class="a-sheet__dy">
+        <van-cell-group>
+            <van-cell title-class="multi-line" wx:for="{{greetingContents}}" wx:key="_id" title="{{item.content}}" bindtap="handleCell" data-content="{{item.content}}" />
+        </van-cell-group>
+    </view>
+</van-action-sheet>
+<van-action-sheet show="{{ dynamicEffectShow }}" title="动画特效" bind:close="handleCancel">
+    <view class="a-sheet__dy">
+        <van-cell-group>
+            <van-cell wx:for="{{ dynamicEffectList }}" wx:key="index" bindtap="handleCellDy" data-item="{{item}}">
+                <view slot="title">
+                    {{item.title}}
+                    <van-icon name="vip-card-o" wx:if="{{item.isVIP}}" size="35rpx" color="#f1ca5c" />
+                </view>
+            </van-cell>
+        </van-cell-group>
+        <!-- <van-checkbox-group max="{{ 2 }}" value="{{ dynamicEffectValues }}" bind:change="onDynamicChange">
+            <van-checkbox custom-class="a-sheet__checkbox" checked-color="#dc3b0f" wx:for="{{ dynamicEffectList }}" name="{{ item.name }}">
+                {{ item.title }}
+            </van-checkbox>
+        </van-checkbox-group> -->
+        <!-- <van-checkbox-group value="{{ dynamicEffectValues }}" bind:change="onDynamicChange">
+            <van-cell-group>
+                <van-cell wx:for="{{ dynamicEffectList }}" wx:key="index" title="{{ item.title }}" value-class="value-class" clickable data-index="{{ index }}" bind:click="dynamicToggle">
+                    <van-checkbox catch:tap="noop" class="checkboxes-{{ index }}" name="{{ item.name }}" />
+                </van-cell>
+            </van-cell-group>
+        </van-checkbox-group> -->
+        <!-- <view>最多只能选择2种</view> -->
+        <!-- <van-button block color="#416162">确定</van-button> -->
+    </view>
+</van-action-sheet>
+<!-- 红包雨容器 -->
+<!-- <view class="red-packet-rain" wx:if="{{showRain}}">
+    <view class="red-packet" wx:for="{{20}}" wx:key="index" style="left: {{index * 5}}%; animation-delay: {{index * 0.3}}s;"></view>
+</view> -->
+<red-packet-rain show="{{showRain}}" packet-count="{{50}}" spacing="{{5}}" delay="{{0.3}}" max-rounds="{{3}}" image-url="https://yghub.com/prod-api/profile/upload/test/demo3.png" image-width="{{60}}" image-height="{{80}}" />
+<!-- 烟花 -->
+<fireworks show="{{showFireworks}}" />
+<!-- 生日蛋糕动画 -->
+<birthday-cake show="{{showCake}}" />
+<!-- 火箭动画容器 -->
+<rocket show="{{showRocket}}" />
+<van-action-sheet show="{{ openProcessShow }}" title="免费获得VIP会员" bind:close="handleOpenProcessCancel">
+    <open-process></open-process>
+</van-action-sheet>

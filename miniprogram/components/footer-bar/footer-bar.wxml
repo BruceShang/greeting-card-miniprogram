@@ -1,0 +1,11 @@
+<view class="footer-bar {{fixed ? 'footer-bar-fixed' : ''}}" style="background-color: {{backgroundColor}}; {{safeAreaInsetBottom ? 'padding-bottom: ' + safeAreaBottom + 'px' : ''}}">
+    <view class="footer-bar-border" style="background-color: {{borderStyle}}"></view>
+    <view wx:for="{{tabList}}" wx:key="index" class="footer-bar-item" data-index="{{index}}" bindtap="switchfooter">
+        <view class="footer-bar-item__icon">
+            <image src="{{current === index ? item.selectedIconPath : item.iconPath}}"></image>
+            <view wx:if="{{item.badge}}" class="footer-bar-item__badge">{{item.badge}}</view>
+            <view wx:elif="{{item.dot}}" class="footer-bar-item__dot"></view>
+        </view>
+        <view style="color: {{current === index ? selectedColor : color}}">{{item.text}}</view>
+    </view>
+</view>
